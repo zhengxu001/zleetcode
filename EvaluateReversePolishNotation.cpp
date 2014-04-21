@@ -1,3 +1,4 @@
+//by zen 2014.04.22
 class Solution {
 public:
     bool isOperator(char c) {
