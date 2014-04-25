@@ -1,28 +1,65 @@
-#include <stdio.h>
-
-    int lengthOfLongestSubstring(string s) {
-        int n = s.size();
-        int k[1000];
-        int count = 0;
-        memset(k,0,sizeof(k));
-        for(int i=0;i<n;i++)
-        {
-            k[(int)(s[i]-'\0')]++;
-        }
-        for(int i=0;i<1000;i++)
-        {
-            if(k[i]>0)
-            count++;
-        }
-        return count;
+ /**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ vector<vector<int> > zigzagLevelOrder(TreeNode *root) 
+ {
+    vector<vector<int>> ans;
+    if(NULL==root)
+    {
+        return ans;
     }
-int main(int argc, char const *argv[])
-{
 
-	stirng s =  "abcabcbb";
-	//1 1 2 2 3   3   4 4  5 5 6
-	printf("%d<-",lengthOfLongestSubstring(string s));
-    //printf("%s\n", );
-	/* code */
-	return 0;
+    queue<TreeNode*> que;
+    que.push(root);
+    que.push(NULL);
+
+    bool l2r = true;
+
+    vector<int> level;
+
+    while(true)
+    {
+        TreeNode *cur = que.front();
+        que.pop();
+        if(cur)
+        {
+            level.push_back(cur->var);
+            if(cur->left) 
+            {
+                que.push(cur->left);
+            }
+            if(cur->right)
+            {
+                que.push(cur->right);
+            }
+        } 
+        else
+        {
+            if(l2r)
+            {
+                ans.push_back(level);
+            }
+            else
+            {
+                vector<int> temp;
+                for(int i = level.size()-1;i>=0;--i)
+                {
+                    temp.push_back(level[i]);
+                }
+                ans.push_back(temp);
+            }
+        
+            level.erase(level.begin(), level.end());
+            l2r = !l2r;
+            if(que.size()==0) break;
+            que.push_back(NULL);
+        }
+    }
+    return ret;
 }
