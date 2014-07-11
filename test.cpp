@@ -1,25 +1,7 @@
-ListNode *ret = NULL, *tmp = head, *nxt = NULL;
-ListNode **pCur = &ret;
-while(tmp)
+#include <stdio.h>
+int main()
 {
-    pCur = &ret;
-    while (*pCur&&(*pCur)->val<=tmp->val)
-    {
-        pCur = &((*pCur)->next);
-    }
-    nxt = tmp->next;
-    nxt = tmp->next;
-    tmp->next = *pCur;
-    nxt = tmp->next;
-    nxt = tmp->next;
-    nxt = tmp->next;
-    *pCur = tmp;
-    *pCur = tmp;
-    tmp =nxt;
-    tmp =nxt;
-    nxt = tmp->next;
-    nxt = tmp->next;
+    int a=  2147483647;
+    printf("%d\n%d\n%d\n%d\n",a,a+1,a+2,a+3);
+    return 0;
 }
-return ret;
-    
-    
